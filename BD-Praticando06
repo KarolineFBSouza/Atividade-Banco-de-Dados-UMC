@@ -1,0 +1,55 @@
+CREATE DATABASE praticando06;
+USE praticando06;
+ 
+CREATE TABLE pessoa (
+    codigo INT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    estado VARCHAR(50) NOT NULL
+);
+ 
+CREATE TABLE produtos (
+    codigoProd INT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+ 
+INSERT INTO pessoa (codigo, nome, cidade, estado) VALUES
+(1, 'Maria Silva', 'São Paulo', 'SP'),
+(2, 'João Santos', 'Rio de Janeiro', 'RJ'),
+(3, 'Ana Costa', 'Belo Horizonte', 'MG'),
+(4, 'Pedro Oliveira', 'Curitiba', 'PR'),
+(5, 'Lucas Almeida', 'Fortaleza', 'CE'),
+(6, 'Fernanda Lima', 'Salvador', 'BA'),
+(7, 'Roberto Souza', 'Recife', 'PE'),
+(8, 'Juliana Pereira', 'Porto Alegre', 'RS'),
+(9, 'Carlos Mendes', 'Brasília', 'DF'),
+(10, 'Patrícia Martins', 'Manaus', 'AM');
+ 
+INSERT INTO produtos (codigoProd, nome) VALUES
+(1, 'Produto A'),
+(2, 'Produto B'),
+(3, 'Produto C'),
+(4, 'Produto D'),
+(5, 'Produto E'),
+(6, 'Produto F'),
+(7, 'Produto G'),
+(8, 'Produto H'),
+(9, 'Produto I'),
+(10, 'Produto J');
+ 
+ALTER TABLE produtos 
+CHANGE nome descricao VARCHAR(50) NOT NULL;
+ 
+SELECT estado, GROUP_CONCAT(cidade) AS cidades
+FROM pessoa
+GROUP BY estado;
+ 
+SELECT estado, GROUP_CONCAT(cidade) AS cidades
+FROM pessoa
+GROUP BY estado
+ORDER BY estado ASC;
+ 
+SELECT estado, GROUP_CONCAT(cidade) AS cidades
+FROM pessoa
+GROUP BY estado
+ORDER BY estado DESC;
